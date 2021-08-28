@@ -3,9 +3,6 @@
 # @Author : chenxiangan
 # @File : config.py
 # @Software: PyCharm
-LANGUAGE_CODES = {
-    '1537': '普通话(纯中文识别, 输入法模型)',
-}
 app_id = "你的app_api"
 api_key = "你的api_key"
 secret_key = "你的api_secret_key"
