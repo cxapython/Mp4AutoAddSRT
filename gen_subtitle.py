@@ -15,14 +15,10 @@ import tempfile
 import wave
 
 from aip import AipSpeech
-from autosubb.constants import LANGUAGE_CODES
-from autosubb.formatters import FORMATTERS
+from formatters import FORMATTERS
 from progressbar import ProgressBar, Percentage, Bar, ETA
 
-DEFAULT_SUBTITLE_FORMAT = 'srt'
-DEFAULT_CONCURRENCY = 1
-DEFAULT_LANGUAGE = '1537'
-
+from config import *
 
 def percentile(arr, percent):
     """
