@@ -64,6 +64,8 @@ def main():
             # 手动校对字幕
             if args.ignore_error:
                 step3(srt_file_path, source_path)
+        elif step == 1:
+            step1(source_path)  # 视频文件转换为音频文件【优先wav】
         elif step == 3:
             # 单独执行第三步
             step3(srt_file_path, source_path)
@@ -121,9 +123,9 @@ def step3(srt_file_path, video_file_path):
         output = f"{video_file_path}".replace(file_type, f"_result{file_type}")
     if os.path.exists(output):
         os.remove(output)
-        # Fontsize指定字体大小，Alignment=2,居中
+    # 推荐下载思源字体，或者其他免费的非商业字体，通过Fontname可以修改
     command = ["ffmpeg", "-i", video_file_path, "-lavfi",
-               f"subtitles={srt_file_path}:force_style='Fontsize=18,MarginV=20'",
+               f"subtitles={srt_file_path}:force_style='Alignment=2,Fontsize=18,Fontname=SourceHanSansCN-Medium,MarginV=20'",
                "-crf", "1", "-c:a", "copy", output]
     use_shell = True if os.name == "nt" else False
     subprocess.check_output(command, stdin=open(os.devnull), shell=use_shell)
